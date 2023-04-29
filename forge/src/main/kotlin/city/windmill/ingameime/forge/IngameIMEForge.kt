@@ -6,6 +6,7 @@ import city.windmill.ingameime.client.KeyHandler
 import city.windmill.ingameime.client.ScreenHandler
 import city.windmill.ingameime.client.gui.OverlayScreen
 import city.windmill.ingameime.client.jni.ExternalBaseIME
+import city.windmill.ingameime.forge.register.ForgeConfigScreenRegister
 import net.minecraft.client.Minecraft
 import net.minecraftforge.client.ConfigScreenHandler
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent
@@ -35,7 +36,7 @@ object IngameIMEForge {
                 { _, _ -> true }
             )
         }
-        //Todo: change to ForgeConfigScreenRegister
+        /*
         LOADING_CONTEXT.registerExtensionPoint(
             ConfigScreenHandler.ConfigScreenFactory::class.java
         ) {
@@ -43,12 +44,11 @@ object IngameIMEForge {
                 return@BiFunction ConfigHandler.createConfigScreen().setParentScreen(parent).build()
             })
         }
+         */
 
-        /*
         ForgeConfigScreenRegister.instance.getMod(IngameIME.MODID).registerModConfigScreen { parent ->
             return@registerModConfigScreen ConfigHandler.createConfigScreen().setParentScreen(parent).build()
         }
-         */
 
         runForDist({
             val platform = System.getProperty("os.name").lowercase()

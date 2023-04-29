@@ -1,18 +1,16 @@
 package city.windmill.ingameime.forge.register
 
-import city.windmill.ingameime.forge.register.ForgeConfigScreenRegister.ModConfigScreenRegister.ModConfigScreenProvider
-import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.screens.Screen
 import net.minecraftforge.api.distmarker.Dist
 import net.minecraftforge.api.distmarker.OnlyIn
-import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory
+import net.minecraftforge.client.ConfigScreenHandler
 import net.minecraftforge.fml.ModContainer
 import net.minecraftforge.fml.ModList
 import java.util.concurrent.ConcurrentHashMap
 
 class ForgeConfigScreenRegister {
     fun getMod(id: String): ModConfigScreenRegister {
-        return mods.computeIfAbsent(id) { id: String? -> ModConfigScreenRegisterImpl(id) }
+        return mods.computeIfAbsent(id) { modid: String? -> ModConfigScreenRegisterImpl(modid) }
     }
 
     interface ModConfigScreenRegister {
@@ -32,9 +30,9 @@ class ForgeConfigScreenRegister {
             container = ModList.get().getModContainerById(id).orElseThrow()
         }
 
-        override fun registerModConfigScreen(configScreenProvider: ModConfigScreenProvider) {
-            container.registerExtensionPoint(ConfigScreenFactory::class.java) {
-                ConfigScreenFactory { minecraft: Minecraft?, screen: Screen? ->
+        override fun registerModConfigScreen(configScreenProvider: ModConfigScreenRegister.ModConfigScreenProvider) {
+            container.registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory::class.java) {
+                ConfigScreenHandler.ConfigScreenFactory { _, screen: Screen? ->
                     configScreenProvider.provide(screen)
                 }
             }

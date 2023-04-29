@@ -24,7 +24,7 @@ abstract class MixinEditBox extends AbstractWidget {
         super(i, j, k, l, component);
     }
 
-    @Inject(method = {"setFocus", "onFocusedChanged"}, at = @At("HEAD"))
+    @Inject(method = {"setCanLoseFocus", "onFocusedChanged"}, at = @At("HEAD"))
     private void onSelected(boolean selected, CallbackInfo info) {
         int caretX = bordered ? this.getX() + 4 : this.getX();
         int caretY = bordered ? this.getY() + (height - 8) / 2 : this.getY();

@@ -26,8 +26,8 @@ abstract class MixinEditBox extends AbstractWidget {
 
     @Inject(method = {"setFocus", "onFocusedChanged"}, at = @At("HEAD"))
     private void onSelected(boolean selected, CallbackInfo info) {
-        int caretX = bordered ? x + 4 : x;
-        int caretY = bordered ? y + (height - 8) / 2 : y;
+        int caretX = bordered ? this.getX() + 4 : this.getX();
+        int caretY = bordered ? this.getY() + (height - 8) / 2 : this.getY();
         if (selected)
             IngameIMEForge.INSTANCE.getINGAMEIME_BUS().post(new ScreenEvents.EditOpen(this, new Pair<>(caretX, caretY)));
         else
@@ -39,8 +39,8 @@ abstract class MixinEditBox extends AbstractWidget {
             shift = At.Shift.BEFORE,
             ordinal = 0))
     private void onFocused(double double_1, double double_2, int int_1, CallbackInfoReturnable<Boolean> cir) {
-        int caretX = bordered ? x + 4 : x;
-        int caretY = bordered ? y + (height - 8) / 2 : y;
+        int caretX = bordered ? this.getX() + 4 : this.getX();
+        int caretY = bordered ? this.getY() + (height - 8) / 2 : this.getY();
         IngameIMEForge.INSTANCE.getINGAMEIME_BUS().post(new ScreenEvents.EditOpen(this, new Pair<>(caretX, caretY)));
     }
 

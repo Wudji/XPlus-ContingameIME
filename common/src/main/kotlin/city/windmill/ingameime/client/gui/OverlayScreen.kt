@@ -8,7 +8,7 @@ import city.windmill.ingameime.client.jni.ExternalBaseIME
 import com.mojang.blaze3d.vertex.PoseStack
 import net.minecraft.client.Minecraft
 
-object OverlayScreen : net.minecraft.client.gui.components.Widget {
+object OverlayScreen : net.minecraft.client.gui.components.Renderable {
     private val alphaModeWidget = AlphaModeWidget(Minecraft.getInstance().font)
     private val compositionWidget = CompositionWidget(Minecraft.getInstance().font)
     private val candidateListWidget = CandidateListWidget(Minecraft.getInstance().font)

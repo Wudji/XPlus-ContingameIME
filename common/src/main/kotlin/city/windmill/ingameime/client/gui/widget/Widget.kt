@@ -5,7 +5,7 @@ import net.minecraft.client.gui.Font
 import net.minecraft.client.gui.GuiComponent
 
 
-abstract class Widget(val font: Font) : net.minecraft.client.gui.components.Widget {
+abstract class Widget(val font: Font) : net.minecraft.client.gui.components.Renderable {
     var offsetX = 0
     var offsetY = 0
     var textColor = 0xFF_00_00_00.toInt()

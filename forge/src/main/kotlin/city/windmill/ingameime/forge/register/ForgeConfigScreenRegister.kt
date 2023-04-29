@@ -1,6 +1,6 @@
-package city.windmill.ingameime.forge
+package city.windmill.ingameime.forge.register
 
-import city.windmill.ingameime.forge.ForgeConfigScreenRegister.ModConfigScreenRegister.ModConfigScreenProvider
+import city.windmill.ingameime.forge.register.ForgeConfigScreenRegister.ModConfigScreenRegister.ModConfigScreenProvider
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.screens.Screen
 import net.minecraftforge.api.distmarker.Dist

@@ -12,7 +12,6 @@ import net.minecraftforge.client.event.RegisterKeyMappingsEvent
 import net.minecraftforge.client.event.ScreenEvent
 import net.minecraftforge.fml.IExtensionPoint
 import net.minecraftforge.fml.common.Mod
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent
 import net.minecraftforge.network.NetworkConstants
 import thedarkcolour.kotlinforforge.forge.FORGE_BUS
@@ -36,6 +35,7 @@ object IngameIMEForge {
                 { _, _ -> true }
             )
         }
+        //Todo: change to ForgeConfigScreenRegister
         LOADING_CONTEXT.registerExtensionPoint(
             ConfigScreenHandler.ConfigScreenFactory::class.java
         ) {
@@ -43,6 +43,12 @@ object IngameIMEForge {
                 return@BiFunction ConfigHandler.createConfigScreen().setParentScreen(parent).build()
             })
         }
+
+        /*
+        ForgeConfigScreenRegister.instance.getMod(IngameIME.MODID).registerModConfigScreen { parent ->
+            return@registerModConfigScreen ConfigHandler.createConfigScreen().setParentScreen(parent).build()
+        }
+         */
 
         runForDist({
             val platform = System.getProperty("os.name").lowercase()

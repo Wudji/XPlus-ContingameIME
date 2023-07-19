@@ -4,7 +4,7 @@
 
 # IngameIME-ReInput
 
-An unofficial reset of [IngameIME](https://github.com/Windmill-City/IngameIME-Minecraft). Use input method in full screen Minecraft.
+An unofficial continuation of [IngameIME](https://github.com/Windmill-City/IngameIME-Minecraft). Use input method in full screen Minecraft.
 
 [ZH-CN](README.md) / EN-US
 

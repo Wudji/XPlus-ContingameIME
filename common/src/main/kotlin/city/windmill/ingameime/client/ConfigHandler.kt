@@ -11,6 +11,7 @@ import me.shedaniel.clothconfig2.api.ConfigBuilder
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.components.EditBox
 import net.minecraft.client.gui.screens.ChatScreen
+import net.minecraft.client.resources.language.I18n
 import net.minecraft.network.chat.Component
 import org.apache.logging.log4j.LogManager
 import java.nio.file.Paths
@@ -22,7 +23,6 @@ import kotlin.io.path.reader
 object ConfigHandler {
     var disableIMEInCommandMode = false
         set(value) {
-            val initial = ChatScreen::class.java.getDeclaredField("f_95576_").apply { isAccessible = true }
             if (field != value)
                 if (value) {
                     //Disable -> Enable
@@ -30,8 +30,7 @@ object ConfigHandler {
                         iEditstateListener = IEditStateListener { state ->
                             if (state == ScreenHandler.ScreenState.EditState.EDIT_OPEN
                                 && ScreenHandler.ScreenState.currentScreen is ChatScreen
-                                && initial.get(ScreenHandler.ScreenState.currentScreen as ChatScreen) as String == "/"
-//                                && (ScreenHandler.ScreenState.currentScreen as ChatScreen).initial == "/"
+                                && (ScreenHandler.ScreenState.currentScreen as ChatScreen).initial == "/"
                             ) {
                                 //Disable IME in Command Mode
                                 IMEHandler.IMEState.onEditState(ScreenHandler.ScreenState.EditState.NULL_EDIT)
@@ -131,41 +130,41 @@ object ConfigHandler {
 
     fun createConfigScreen(): ConfigBuilder {
         return ConfigBuilder.create()
-            .setTitle(Component.translatable("config.ingameime.title"))
+            .setTitle(Component.literal(I18n.get("config.title")))
             .setSavingRunnable { saveConfig() }.apply {
-                getOrCreateCategory(Component.translatable("config.category.ingameime.chat")).apply {
+                getOrCreateCategory(Component.literal(I18n.get("config.category.chat"))).apply {
                     addEntry(
                         entryBuilder()
                             .startBooleanToggle(
-                                Component.translatable("desc.ingameime.disableIMEInCommandMode"),
+                                Component.literal(I18n.get("desc.disableIMEInCommandMode")),
                                 disableIMEInCommandMode
                             )
                             .setDefaultValue(true)
-                            .setTooltip(Component.translatable("tooltip.ingameime.disableIMEInCommandMode"))
+                            .setTooltip(Component.literal(I18n.get("tooltip.disableIMEInCommandMode")))
                             .setSaveConsumer { result -> disableIMEInCommandMode = result }
                             .build()
                     )
                     addEntry(
                         entryBuilder()
                             .startBooleanToggle(
-                                Component.translatable("desc.ingameime.autoReplaceSlashChar"),
+                                Component.literal(I18n.get("desc.autoReplaceSlashChar")),
                                 autoReplaceSlashChar
                             )
                             .setDefaultValue(true)
-                            .setTooltip(Component.translatable("tooltip.ingameime.autoReplaceSlashChar"))
+                            .setTooltip(Component.literal(I18n.get("tooltip.autoReplaceSlashChar")))
                             .setSaveConsumer { result -> autoReplaceSlashChar = result }
                             .build()
                     )
                     addEntry(
                         entryBuilder().startStrList(
-                            Component.translatable("desc.ingameime.slashChars"),
+                            Component.literal(I18n.get("desc.slashChars")),
                             slashCharArray.map { it.toString() }
                         )
                             .setDefaultValue(mutableListOf("、"))
-                            .setTooltip(Component.translatable("tooltip.ingameime.slashChars"))
+                            .setTooltip(Component.literal(I18n.get("tooltip.slashChars")))
                             .setCellErrorSupplier { str ->
                                 if (str.length > 1)
-                                    return@setCellErrorSupplier Optional.of(Component.translatable("desc.error.ingameime.slashChars"))
+                                    return@setCellErrorSupplier Optional.of(Component.literal(I18n.get("desc.error.slashChars")))
                                 return@setCellErrorSupplier Optional.empty()
                             }
                             .setSaveConsumer { result ->

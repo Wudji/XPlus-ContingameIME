@@ -1,0 +1,37 @@
+modLoader="kotlinforforge"
+loaderVersion="[3,)"
+issueTrackerURL="https://github.com/TexTrueStudio/IngameIME-Forge/issues"
+license="LGPL-3.0"
+
+[[mods]]
+modId="ingameime"
+version="${version}"
+displayName="IngameIME"
+displayURL="https://github.com/TexTrueStudio/IngameIME-Forge"
+credits="Windmill_City, Wybxc"
+authors="TexTrue, ThinkingStudio"
+description='''
+Enable IME in FullScreen Minecraft
+'''
+logoFile="icon.png"
+
+[[dependencies.ingameime]]
+modId="forge"
+mandatory=true
+versionRange="[41,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.ingameime]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.19,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.ingameime]]
+modId="cloth_config"
+mandatory=true
+versionRange="[8,)"
+ordering="AFTER"
+side="CLIENT"

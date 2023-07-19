@@ -1,20 +1,42 @@
 package city.windmill.ingameime.forge
 
+import dev.architectury.event.EventFactory
 import net.minecraft.client.gui.screens.Screen
-import net.minecraftforge.api.distmarker.Dist
-import net.minecraftforge.api.distmarker.OnlyIn
-import net.minecraftforge.eventbus.api.Event
-import net.minecraftforge.fml.event.IModBusEvent
 
-@OnlyIn(Dist.CLIENT)
-class ScreenEvents {
-    abstract class ModEvent : Event(), IModBusEvent
+object ScreenEvents {
+    var SCREEN_MOUSE_MOVE = EventFactory.createEventResult<MouseMove>()
 
-    @Suppress("unused")
-    class WindowSizeChanged(val width: Int, val height: Int) : ModEvent()
-    class ScreenChanged(val oldScreen: Screen?, val newScreen: Screen?) : ModEvent()
-    
-    class EditOpen(val edit: Any, val caretPos: Pair<Int, Int>) : ModEvent()
-    class EditCaret(val edit: Any, val caretPos: Pair<Int, Int>) : ModEvent()
-    class EditClose(val edit: Any) : ModEvent()
+    val WINDOW_SIZE_CHANGED = EventFactory.createEventResult<WindowSizeChanged>()
+
+    val SCREEN_CHANGED = EventFactory.createEventResult<ScreenChanged>()
+
+    val EDIT_OPEN = EventFactory.createEventResult<EditOpen>()
+
+    val EDIT_CARET = EventFactory.createEventResult<EditCaret>()
+
+    val EDIT_CLOSE = EventFactory.createEventResult<EditClose>()
+
+    fun interface MouseMove {
+        fun onMouseMove(prevX: Int, prevY: Int, curX: Int, curY: Int)
+    }
+
+    fun interface WindowSizeChanged {
+        fun onWindowSizeChanged(sizeX: Int, sizeY: Int)
+    }
+
+    fun interface ScreenChanged {
+        fun onScreenChanged(oldScreen: Screen?, newScreen: Screen?)
+    }
+
+    fun interface EditOpen {
+        fun onEditOpen(edit: Any, caretPos: Pair<Int, Int>)
+    }
+
+    fun interface EditCaret {
+        fun onEditCaret(edit: Any, caretPos: Pair<Int, Int>)
+    }
+
+    fun interface EditClose {
+        fun onEditClose(edit: Any)
+    }
 }

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "ingameime",
+  "version": "${version}",
+  "name": "IngameIME-ReInput",
+  "description": "Enable IME in FullScreen Minecraft",
+  "authors": [
+    "ThinkingStudio, TexTrue, Wybxc", "Windmill_City"
+  ],
+  "contact": {
+    "sources": "https://github.com/TexTrueStudio/IngameIME-ReInput",
+    "issues": "https://github.com/TexTrueStudio/IngameIME-ReInput/issues"
+  },
+  "license": "LGPL-3.0",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "city.windmill.ingameime.fabric.IngameIMEClientFabric"
+      }
+    ]
+  },
+  "accessWidener": "ingameime.accesswidener",
+  "mixins": [
+    {
+      "config": "ingameime.fabric.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "fabric-key-binding-api-v1": "*",
+    "fabric-language-kotlin": "*",
+    "architectury": "*",
+    "cloth-config": "*"
+  },
+  "recommends": {
+    "modmenu": ">=2.0",
+    "satin": ">=1.6"
+  },
+  "breaks": {
+    "minecraft": "1.20.x"
+  }
+}

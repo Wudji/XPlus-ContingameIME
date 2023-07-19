@@ -14,7 +14,7 @@ loom {
         convertAccessWideners.set(true)
         extraAccessWideners.add(loom.accessWidenerPath.get().asFile.name)
 
-        mixinConfig("ingameime.forge.mixin.json")
+        mixinConfig("ingameime.forge.mixins.json")
     }
 }
 
@@ -38,8 +38,13 @@ repositories {
 
 dependencies {
     forge("net.minecraftforge:forge:${rootProject.property("forge_version")}")
+    modApi("dev.architectury:architectury-forge:${rootProject.property("architectury_version")}")
+    modImplementation("me.shedaniel:RoughlyEnoughItems-forge:${rootProject.property("rei_version")}")
+
     modImplementation("me.shedaniel.cloth:cloth-config-forge:${rootProject.property("cloth_config_version")}")
+
     implementation("thedarkcolour:kotlinforforge:${rootProject.property("kotlinforforge_version")}")
+
     common(project(":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(":common", configuration = "transformProductionForge")) { isTransitive = false }
 }
@@ -69,7 +74,7 @@ tasks {
     remapJar {
         inputFile.set(shadowJar.flatMap { it.archiveFile })
         dependsOn(shadowJar)
-        //archiveClassifier.set("forge")
+        archiveClassifier.set("forge")
     }
 
     jar {
@@ -83,13 +88,12 @@ tasks {
         duplicatesStrategy = DuplicatesStrategy.INCLUDE
     }
 
-
-
+    /*
     publishing {
         publications {
             create<MavenPublication>("mavenForge") {
                 artifactId = "${rootProject.property("archives_base_name")}-${project.name}"
-                from(javaComponent)
+                from(components.getByName("java"))
             }
         }
 
@@ -98,4 +102,5 @@ tasks {
             // Add repositories to publish to here.
         }
     }
+     */
 }

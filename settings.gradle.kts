@@ -1,14 +1,15 @@
 pluginManagement {
     repositories {
-        maven { url = uri("https://maven.fabricmc.net/") }
-        maven { url = uri("https://maven.architectury.dev/") }
-        maven { url = uri("https://maven.minecraftforge.net/") }
+        mavenCentral()
+        maven("https://maven.fabricmc.net")
+        maven("https://maven.architectury.dev")
+        maven("https://files.minecraftforge.net/maven")
         gradlePluginPortal()
     }
 }
 
 include("common")
+include("fabric")
 include("forge")
 
-rootProject.name = "IngameIME-Forge"
-
+rootProject.name = "IngameIME-ReInput"

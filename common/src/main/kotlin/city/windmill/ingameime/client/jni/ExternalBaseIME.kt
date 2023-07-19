@@ -45,7 +45,7 @@ object ExternalBaseIME {
         try {
             val x86 = if (Minecraft.getInstance().is64Bit) "" else "-x86"
             val resourceNative = ResourceLocation("ingameime", "natives/jni$x86.dll")
-            NativeLoader.load(Minecraft.getInstance().resourceManager.getResourceOrThrow(resourceNative))
+            NativeLoader.load(Minecraft.getInstance().resourceManager.getResource(resourceNative).orElseThrow())
             LOGGER.debug("Initialing window")
             nInitialize(glfwGetWin32Window(Minecraft.getInstance().window.window))
             FullScreen = Minecraft.getInstance().window.isFullscreen
@@ -71,24 +71,14 @@ object ExternalBaseIME {
 
     @Suppress("unused")
     private fun onComposition(str: String?, caret: Int, state: CompositionState) {
-        val charTyped = Minecraft.getInstance().keyboardHandler::class.java
-            .getDeclaredMethod("m_90889_", Long::class.java, Int::class.java, Int::class.java)
-            .apply { isAccessible = true }
         when (state) {
             CompositionState.Commit -> {
                 OverlayScreen.composition = null
                 iCommitListener.onCommit(str!!).onEach { ch ->
-//                    Minecraft.getInstance().keyboardHandler
-//                        .charTyped(Minecraft.getInstance().window.window, ch.code, 0)
-                    charTyped.invoke(
-                        Minecraft.getInstance().keyboardHandler,
-                        Minecraft.getInstance().window.window,
-                        ch.code,
-                        0
-                    )
+                    Minecraft.getInstance().keyboardHandler
+                        .charTyped(Minecraft.getInstance().window.window, ch.code, 0)
                 }
             }
-
             CompositionState.Start,
             CompositionState.End,
             CompositionState.Update -> {

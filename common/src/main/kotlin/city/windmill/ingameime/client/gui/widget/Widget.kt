@@ -1,8 +1,7 @@
 package city.windmill.ingameime.client.gui.widget
 
-import com.mojang.blaze3d.vertex.PoseStack
 import net.minecraft.client.gui.Font
-import net.minecraft.client.gui.GuiComponent
+import net.minecraft.client.gui.GuiGraphics
 
 
 abstract class Widget(val font: Font) : net.minecraft.client.gui.components.Renderable {
@@ -17,21 +16,14 @@ abstract class Widget(val font: Font) : net.minecraft.client.gui.components.Rend
     open val height get() = padding.second * 2
     open val padding = 0 to 0
 
-    override fun render(poseStack: PoseStack, mouseX: Int, mouseY: Int, delta: Float) {
+    override fun render(guiGraphics: GuiGraphics, mouseX: Int, mouseY: Int, delta: Float) {
         if (active)
-            draw(poseStack, offsetX, offsetY, mouseX, mouseY, delta)
+            draw(guiGraphics, offsetX, offsetY, mouseX, mouseY, delta)
     }
 
-    open fun draw(poseStack: PoseStack, offsetX: Int, offsetY: Int, mouseX: Int, mouseY: Int, delta: Float) {
+    open fun draw(guiGraphics: GuiGraphics, offsetX: Int, offsetY: Int, mouseX: Int, mouseY: Int, delta: Float) {
         //Background
-        GuiComponent.fill(
-            poseStack,
-            offsetX,
-            offsetY,
-            offsetX + width,
-            offsetY + height,
-            backgroundColor
-        )
+        guiGraphics.fill(offsetX, offsetY, offsetX + width, offsetY + height, backgroundColor)
     }
 
     fun moveTo(x: Int, y: Int) {

@@ -17,6 +17,5 @@ class MixinMinecraft {
     @Inject(method = "setScreen", at = @At("HEAD"))
     private void onScreenChange(Screen screenIn, CallbackInfo info) {
         ScreenEvents.INSTANCE.getSCREEN_CHANGED().invoker().onScreenChanged(screen, screenIn);
-        //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.ScreenChanged(screen, screenIn));
     }
 }

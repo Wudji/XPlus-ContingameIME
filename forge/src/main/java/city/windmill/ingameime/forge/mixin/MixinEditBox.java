@@ -35,10 +35,8 @@ abstract class MixinEditBox extends AbstractWidget {
         int caretY = bordered ? y + (height - 8) / 2 : y;
         if (selected && isEditable)
             ScreenEvents.INSTANCE.getEDIT_OPEN().invoker().onEditOpen(this, new Pair<>(caretX, caretY));
-            //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditOpen(this, new Pair<>(caretX, caretY)));
         else
             ScreenEvents.INSTANCE.getEDIT_CLOSE().invoker().onEditClose(this);
-            //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditClose(this));
     }
 
     @Inject(method = "setEditable", at = @At("HEAD"))
@@ -61,7 +59,6 @@ abstract class MixinEditBox extends AbstractWidget {
         int y = getY();
         int caretX = bordered ? x + 4 : x;
         int caretY = bordered ? y + (height - 8) / 2 : y;
-        //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditOpen(this, new Pair<>(caretX, caretY)));
         if (isFocused() && isEditable)
             ScreenEvents.INSTANCE.getEDIT_OPEN().invoker().onEditOpen(this, new Pair<>(caretX, caretY));
         else
@@ -73,7 +70,6 @@ abstract class MixinEditBox extends AbstractWidget {
             locals = LocalCapture.CAPTURE_FAILSOFT)
     private void onCaret(GuiGraphics guiGraphics, int arg1, int arg2, float arg3, CallbackInfo ci, int l, int m, int n, String string, boolean bl, boolean bl2, int o, int p, int q, boolean bl3, int r) {
         ScreenEvents.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(r, p));
-        //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditCaret(this, new Pair<>(r, p)));
     }
 }
 
@@ -91,10 +87,8 @@ abstract class MixinTextFieldWidget {
         int caretY = hasBorder ? bounds.y + (bounds.height - 8) / 2 : bounds.y;
         if (selected)
             ScreenEvents.INSTANCE.getEDIT_OPEN().invoker().onEditOpen(this, new Pair<>(caretX, caretY));
-            //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditOpen(this, new Pair<>(caretX, caretY)));
         else
             ScreenEvents.INSTANCE.getEDIT_CLOSE().invoker().onEditClose(this);
-            //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditClose(this));
     }
 
     @Inject(method = {"render"},
@@ -102,6 +96,5 @@ abstract class MixinTextFieldWidget {
             locals = LocalCapture.CAPTURE_FAILSOFT, remap = false)
     private void onCaret(GuiGraphics guiGraphics, int arg1, int arg2, float arg3, CallbackInfo ci, int l, int m, int n, String string, boolean bl, boolean bl2, int o, int p, int q, boolean bl3, int r) {
         ScreenEvents.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(r, p));
-        //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditCaret(this, new Pair<>(r, p)));
     }
 }

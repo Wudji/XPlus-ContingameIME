@@ -19,6 +19,5 @@ public class MixinFullScreen {
     @Inject(method = "resizeDisplay", at = @At("RETURN"))
     private void onScreenSizeChanged(CallbackInfo info) {
         ScreenEvents.INSTANCE.getWINDOW_SIZE_CHANGED().invoker().onWindowSizeChanged(window.getWidth(), window.getHeight());
-        //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.WindowSizeChanged(window.getWidth(), window.getHeight()));
     }
 }

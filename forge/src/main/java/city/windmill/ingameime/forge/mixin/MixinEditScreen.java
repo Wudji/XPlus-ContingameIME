@@ -28,7 +28,6 @@ class MixinScreen {
     @Inject(method = "removed", at = @At("TAIL"))
     private void onRemove(CallbackInfo info) {
         ScreenEvents.INSTANCE.getEDIT_CLOSE().invoker().onEditClose(this);
-        //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditClose(this));
     }
 }
 
@@ -37,7 +36,6 @@ class MixinEditScreen {
     @Inject(method = "init", at = @At("TAIL"))
     private void onInit(CallbackInfo info) {
         ScreenEvents.INSTANCE.getEDIT_OPEN().invoker().onEditOpen(this, new Pair<>(0, 0));
-        //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditOpen(this, new Pair<>(0, 0)));
     }
 }
 
@@ -63,7 +61,6 @@ abstract class MixinBookEditScreen {
             pos2ix.setAccessible(true);
             pos2iy.setAccessible(true);
             ScreenEvents.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>((Integer) pos2ix.get(cir.getReturnValue()), (Integer) pos2iy.get(cir.getReturnValue())));
-            //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditCaret(this, new Pair<>((Integer) pos2ix.get(cir.getReturnValue()), (Integer) pos2iy.get(cir.getReturnValue()))));
         } catch (Exception ignored) {
 
         }
@@ -81,12 +78,6 @@ abstract class MixinBookEditScreen {
                         - Minecraft.getInstance().font.width("_"),
                 50
         ));
-        //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditCaret(this, new Pair<>(
-        //        k + 36 + (114 + n) / 2
-        //                - Minecraft.getInstance().font.width("_"),
-        //        50
-        //)));
-
     }
 }
 
@@ -114,7 +105,6 @@ abstract class MixinEditSignScreen extends Screen {
             m03.setAccessible(true);
             m13.setAccessible(true);
             ScreenEvents.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>((Integer) m03.get(matrix4f) + s, (Integer) m13.get(matrix4f) + o));
-            //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditCaret(this, new Pair<>((Integer) m03.get(lv5) + s, (Integer) m13.get(lv5) + o)));
         } catch (Exception ignored) {
 
         }
@@ -129,7 +119,6 @@ abstract class MixinEditSignScreen extends Screen {
             m03.setAccessible(true);
             m13.setAccessible(true);
             ScreenEvents.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>((Integer) m03.get(matrix4f) + v, (Integer) m13.get(matrix4f) + o));
-            //IngameIMEClientForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditCaret(this, new Pair<>((Integer) m03.get(lv5) + v, (Integer) m13.get(lv5) + o)));
         } catch (Exception ignored) {
 
         }

@@ -37,11 +37,11 @@ dependencies {
     //Fabric
     modImplementation("net.fabricmc:fabric-loader:0.13.3")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${rootProject.property("fabric_version")}")
+    //Cloth Api? "The Cloth API has largely been replaced by the Architectury API."
+    //Architectury API
     modApi("dev.architectury:architectury-fabric:${rootProject.property("architectury_version")}")
     //REI
     modImplementation("me.shedaniel:RoughlyEnoughItems-fabric:${rootProject.property("rei_version")}")
-    //Cloth Api
-    //modImplementation("me.shedaniel.cloth.api:cloth-client-events-v0:2.0.+")
     //Stain
     modCompileOnly("io.github.ladysnake:satin:${rootProject.property("satin_version")}")
     //Kotlin
@@ -50,8 +50,6 @@ dependencies {
     modImplementation("me.shedaniel.cloth:cloth-config-fabric:${rootProject.property("cloth_config_version")}") {
         exclude("net.fabricmc.fabric-api")
     }
-    //ModMenu
-    modImplementation("com.terraformersmc:modmenu:${rootProject.property("modmenu_version")}")
 
     common(project(":common", configuration = "namedElements")) { isTransitive = false }
     shadowCommon(project(":common", configuration = "transformProductionFabric")) { isTransitive = false }

@@ -3,7 +3,7 @@
   "id": "ingameime",
   "version": "${version}",
   "name": "IngameIME-ReInput",
-  "description": "Enable IME in FullScreen Minecraft",
+  "description": "An unofficial continuation of IngameIME.\nEnable IME in FullScreen Minecraft",
   "authors": [
     "ThinkingStudio, TexTrue, Wybxc", "Windmill_City"
   ],

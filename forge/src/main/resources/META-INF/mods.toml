@@ -31,7 +31,7 @@ side = "CLIENT"
 [[dependencies.ingameime]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.16,1.17)"
+versionRange = "[1.20,)"
 ordering = "NONE"
 side = "CLIENT"
 

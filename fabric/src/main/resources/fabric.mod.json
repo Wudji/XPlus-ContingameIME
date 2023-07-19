@@ -30,6 +30,7 @@
     }
   ],
   "depends": {
+    "minecraft": "1.20.x",
     "fabricloader": "*",
     "fabric-key-binding-api-v1": "*",
     "fabric-language-kotlin": "*",
@@ -37,10 +38,6 @@
     "cloth-config": "*"
   },
   "recommends": {
-    "modmenu": ">=2.0",
-    "satin": ">=1.6"
-  },
-  "breaks": {
-    "minecraft": "1.20.x"
+    "satin": "*"
   }
 }

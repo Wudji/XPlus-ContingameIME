@@ -1,50 +1,50 @@
-# IngameIME-Minecraft
+<center><div align="center">
 
-![Icon](https://github.com/Windmill-City/IngameIME-Minecraft/raw/master/IngameIME-Icon.png)
+<img height="150" width="150" src="icon/400x400.png"/>
 
-Use input method in full screen Minecraft
+# IngameIME-ReInput
 
-![CurseForge Bandage Downloads](http://cf.way2muchnoise.eu/full_440032_downloads.svg)
-![CurseForge Bandage Versions](http://cf.way2muchnoise.eu/versions/440032.svg)
+[IngameIME](https://github.com/Windmill-City/IngameIME-Minecraft) 的非官方重置版。在全屏的Minecraft中使用输入法。
 
-# Preview
+ZH-CN / [EN-US](README-EN.md)
 
-### Window Mode
+</div></center>
 
-![Window Mode](https://github.com/Windmill-City/IngameIME-Minecraft/raw/master/Docs/WindowInput.gif)
+# 图片展示
 
-### Full screen Mode
+### 窗口模式
 
-![Full screen Mode](https://github.com/Windmill-City/IngameIME-Minecraft/raw/master/Docs/FullScreenInput.gif)
+<div align="center">
+<img height="250" width="450" src="old/docs/WindowInput.gif"/>
+</div>
 
-# Toggle Key
+### 全屏模式
 
-- Click the hotkey to switch between **temporary input state** and **closed state**
-- Double-click the hot key to switch to **open mode**
-- **temporary input state** switch to **closed State** when mouse move and something was committed
+<div align="center">
+<img height="250" width="450" src="old/docs/FullScreenInput.gif"/>
+</div>
 
-## Dependencies
+# 按键切换
 
-### Forge
+- 单击快捷键，在**临时输入状态**和**关闭状态**之间切换
+- 双击快捷键，切换到**开启模式**。
+- 当鼠标移动并有事情发生时，**临时输入状态**切换到**关闭状态**。
 
-- https://www.curseforge.com/minecraft/mc-mods/kotlin-for-forge
-- https://www.curseforge.com/minecraft/mc-mods/cloth-config-forge
+## 依赖
 
-### Fabric
+- Forge
+  - [Kotlin for Forge](https://www.curseforge.com/minecraft/mc-mods/kotlin-for-forge)
+  - [Cloth Config API (Forge)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
+  - [Architectuey API (Forge)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
 
-- https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin
-- https://www.curseforge.com/minecraft/mc-mods/fabric-api
-- https://www.curseforge.com/minecraft/mc-mods/cloth-api
-- https://www.curseforge.com/minecraft/mc-mods/cloth-config
+- Fabric
+  - [Fabric Language Kotlin](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin)
+  - [Cloth Config API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
+  - [Architectuey API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
+  - [Satin API](https://www.curseforge.com/minecraft/mc-mods/satin-api) **（Optional）**
 
-#### Version 1.16 and above, this mod is optional (conflicts with Optifine)
+### 该模组需要VCRuntime141运行，请在微软的官方网站上下载  [下载链接](https://learn.microsoft.com/zh-CN/cpp/windows/latest-supported-vc-redist)
 
-- https://www.curseforge.com/minecraft/mc-mods/satin-api
-
-### If the input method is not turned on automatically, install MixinBootStrap(Required for Minecraft 1.15.X and 1.14.X)
-
-https://www.curseforge.com/minecraft/mc-mods/mixinbootstrap
-
-### This Mod requires VCRuntime141 to run, download it on the official website of Microsoft
-
-[Download Link](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)
+# 代码使用/引用
+- [Windmill-City/IngameIME-Minecraft](https://github.com/Windmill-City/IngameIME-Minecraft) (LGPL-2.1)
+- [Wybxc/IngameIME-Minecraft](https://github.com/Wybxc/IngameIME-Minecraft) (LGPL-2.1)

@@ -1,9 +1,9 @@
 {
   "key.ingameime.hotkey": "Toggle IME State",
-  "category.ingameime.keybinding": "IngameIME",
+  "category.ingameime.keybinding": "ContingameIME",
   "alpha.ingameime.mode": "A",
   "native.ingameime.mode": "ENG",
-  "config.title": "IngameIME Config",
+  "config.title": "ContingameIME Config",
   "config.category.chat": "Chat",
   "desc.disableIMEInCommandMode": "Disable IME in command mode",
   "tooltip.disableIMEInCommandMode": "(When open chat by / key)",

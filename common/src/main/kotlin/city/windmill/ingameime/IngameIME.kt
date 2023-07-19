@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory
 
 object IngameIME {
     const val MODID = "ingameime"
-    const val MODNAME = "IngameIME"
+    const val MODNAME = "ContingameIME"
     val LOGGER: Logger = LoggerFactory.getLogger(MODNAME)
 
     fun onInitClient() {

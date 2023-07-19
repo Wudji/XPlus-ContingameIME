@@ -13,7 +13,7 @@ fun interface IEditStateListener {
 }
 
 object ScreenHandler {
-    private val LOGGER = LogManager.getFormatterLogger("IngameIME|ScreenHandler")!!
+    private val LOGGER = LogManager.getFormatterLogger("ContingameIME|ScreenHandler")!!
     
     enum class ScreenState {
         NULL_SCREEN {

@@ -21,7 +21,7 @@ object KeyHandler {
         "category.ingameime.keybinding"
     )
     
-    private val LOGGER = LogManager.getFormatterLogger("IngameIME|KeyHandler")!!
+    private val LOGGER = LogManager.getFormatterLogger("ContingameIME|KeyHandler")!!
     
     enum class KeyState {
         PENDING_KEY_DOWN {

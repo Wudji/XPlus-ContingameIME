@@ -81,7 +81,7 @@ object ConfigHandler {
         Minecraft.getInstance().gameDirectory.toString(),
         "config", "ingameime.json"
     )
-    private val LOGGER = LogManager.getFormatterLogger("IngameIME|Config")!!
+    private val LOGGER = LogManager.getFormatterLogger("ContingameIME|Config")!!
 
     fun initialConfig() {
         readConfig()

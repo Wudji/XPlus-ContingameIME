@@ -12,7 +12,7 @@ fun interface ICommitListener {
 }
 
 object ExternalBaseIME {
-    private val LOGGER = LogManager.getFormatterLogger("IngameIME|ExternalBaseIME")!!
+    private val LOGGER = LogManager.getFormatterLogger("ContingameIME|ExternalBaseIME")!!
 
     var iCommitListener: ICommitListener = IMEHandler.IMEState
 

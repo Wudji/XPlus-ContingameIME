@@ -2,7 +2,7 @@
 
 <img height="150" width="150" src="icon/400x400.png"/>
 
-# IngameIME-ReInput
+# ContingameIME
 
 [IngameIME](https://github.com/Windmill-City/IngameIME-Minecraft) 的非官方重置版。在全屏的Minecraft中使用输入法。
 

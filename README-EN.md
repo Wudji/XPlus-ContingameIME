@@ -2,7 +2,7 @@
 
 <img height="150" width="150" src="icon/400x400.png"/>
 
-# IngameIME-ReInput
+# ContingameIME
 
 An unofficial continuation of [IngameIME](https://github.com/Windmill-City/IngameIME-Minecraft). Use input method in full screen Minecraft.
 

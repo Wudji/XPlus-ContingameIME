@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "ingameime",
   "version": "${version}",
-  "name": "IngameIME-ReInput",
+  "name": "ContingameIME",
   "description": "An unofficial continuation of IngameIME.\nEnable IME in FullScreen Minecraft",
   "authors": [
     "ThinkingStudio, TexTrue, Wybxc", "Windmill_City"

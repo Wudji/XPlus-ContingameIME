@@ -34,8 +34,8 @@ import thedarkcolour.kotlinforforge.forge.runForDist
 
 @Mod(IngameIME.MODID)
 object IngameIMEClientForge {
-    //val modEventBus = EventBuses.getModEventBus(IngameIME.MODID).get()
-    val INGAMEIME_BUS = MOD_BUS
+    val modEventBus = EventBuses.getModEventBus(IngameIME.MODID).get()
+    //val INGAMEIME_BUS = MOD_BUS
 
     /**
      * Track mouse move
@@ -45,16 +45,16 @@ object IngameIMEClientForge {
 
     init {
         //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
-        //EventBuses.registerModEventBus(IngameIME.MODID, LOADING_CONTEXT.extension())
-        LOADING_CONTEXT.registerExtensionPoint(IExtensionPoint.DisplayTest::class.java) {
-            IExtensionPoint.DisplayTest(NetworkConstants::IGNORESERVERONLY) { _, _ -> true }
-        }
+        EventBuses.registerModEventBus(IngameIME.MODID, LOADING_CONTEXT.extension())
+        //LOADING_CONTEXT.registerExtensionPoint(IExtensionPoint.DisplayTest::class.java) {
+        //    IExtensionPoint.DisplayTest(NetworkConstants::IGNORESERVERONLY) { _, _ -> true }
+        //}
 
         runForDist({
             if (Util.getPlatform() == Util.OS.WINDOWS) {
                 IngameIME.LOGGER.info("it is Windows OS! Loading mod...")
 
-                INGAMEIME_BUS.addListener(::onInitializeClient)
+                modEventBus.addListener(::onInitializeClient)
                 /*
                 with(INGAMEIME_BUS) {
                     addListener(::registerKeys)

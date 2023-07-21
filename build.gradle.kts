@@ -29,7 +29,7 @@ allprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
     base.archivesName.set(rootProject.property("archives_base_name").toString())
-    version = "${rootProject.property("mod_version")}-${project.property("minecraft_version")}"
+    version = rootProject.property("mod_version").toString()
     group = rootProject.property("maven_group").toString()
 
     repositories {
@@ -37,7 +37,7 @@ allprojects {
     }
 
     dependencies {
-        compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:${property("kotlin_version")}")
+        compileClasspath("org.jetbrains.kotlin:kotlin-gradle-plugin:${property("kotlin_version")}")
     }
 
     tasks.withType<JavaCompile> {

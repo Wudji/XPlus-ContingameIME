@@ -17,11 +17,9 @@ import ladysnake.satin.api.event.ResolutionChangeCallback
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.minecraft.Util
 import net.minecraft.client.Minecraft
-import org.apache.logging.log4j.LogManager
 
 @Environment(EnvType.CLIENT)
 object IngameIMEClientFabric : ClientModInitializer {
@@ -40,7 +38,7 @@ object IngameIMEClientFabric : ClientModInitializer {
             ClientLifecycleEvent.CLIENT_STARTED.register(ClientLifecycleEvent.ClientState {
                 ConfigHandler.initialConfig()
 
-                ClientGuiEvent.RENDER_POST.register(ClientGuiEvent.ScreenRenderPost { screen, graphics, mouseX, mouseY, delta ->
+                ClientGuiEvent.RENDER_POST.register(ClientGuiEvent.ScreenRenderPost { _, graphics, mouseX, mouseY, delta ->
                     //Track mouse move here
                     if (mouseX != prevX || mouseY != prevY) {
                         ScreenEvents.SCREEN_MOUSE_MOVE.invoker().onMouseMove(prevX, prevY, mouseX, mouseY)
@@ -54,13 +52,13 @@ object IngameIMEClientFabric : ClientModInitializer {
                 ScreenEvents.SCREEN_MOUSE_MOVE.register(ScreenEvents.MouseMove { _, _, _, _ ->
                     IMEHandler.IMEState.onMouseMove()
                 })
-                ClientScreenInputEvent.KEY_PRESSED_PRE.register(ClientScreenInputEvent.KeyPressed { client, screen, keyCode, scanCode, modifiers ->
+                ClientScreenInputEvent.KEY_PRESSED_PRE.register(ClientScreenInputEvent.KeyPressed { _, _, keyCode, scanCode, modifiers ->
                     if (KeyHandler.KeyState.onKeyDown(keyCode, scanCode, modifiers))
                         EventResult.interruptDefault()
                     else
                         EventResult.pass()
                 })
-                ClientScreenInputEvent.KEY_RELEASED_PRE.register(ClientScreenInputEvent.KeyReleased { client, screen, keyCode, scanCode, modifiers ->
+                ClientScreenInputEvent.KEY_RELEASED_PRE.register(ClientScreenInputEvent.KeyReleased { _, _, keyCode, scanCode, modifiers ->
                     if (KeyHandler.KeyState.onKeyUp(keyCode, scanCode, modifiers))
                         EventResult.interruptDefault()
                     else

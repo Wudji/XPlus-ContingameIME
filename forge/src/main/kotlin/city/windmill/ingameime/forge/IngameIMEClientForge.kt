@@ -41,7 +41,7 @@ object IngameIMEClientForge {
     init {
         //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
         LOADING_CONTEXT.registerExtensionPoint(IExtensionPoint.DisplayTest::class.java) {
-            return@registerExtensionPoint IExtensionPoint.DisplayTest(NetworkConstants::IGNORESERVERONLY) { _, _ -> true }
+            IExtensionPoint.DisplayTest(NetworkConstants::IGNORESERVERONLY) { _, _ -> true }
         }
 
         runForDist({

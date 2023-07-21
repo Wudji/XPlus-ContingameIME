@@ -1,7 +1,7 @@
 plugins {
     java
     id("architectury-plugin") version "3.4-SNAPSHOT"
-    id("dev.architectury.loom") version "1.1-SNAPSHOT" apply false
+    id("dev.architectury.loom") version "1.2-SNAPSHOT" apply false
     kotlin("jvm") version "1.8.0" apply false
 }
 
@@ -37,7 +37,7 @@ allprojects {
     }
 
     dependencies {
-        compileClasspath("org.jetbrains.kotlin:kotlin-gradle-plugin:${property("kotlin_version")}")
+        compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:${property("kotlin_version")}")
     }
 
     tasks.withType<JavaCompile> {

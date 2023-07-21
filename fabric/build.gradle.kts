@@ -86,20 +86,4 @@ tasks {
         dependsOn(commonSources)
         from(commonSources.archiveFile.map { zipTree(it) })
     }
-
-    /*
-    publishing {
-        publications {
-            create<MavenPublication>("mavenFabric") {
-                artifactId = "${rootProject.property("archives_base_name")}-${project.name}"
-                from(components.getByName("java"))
-            }
-        }
-
-        // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-        repositories {
-            // Add repositories to publish to here.
-        }
-    }
-     */
 }

@@ -25,12 +25,12 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import net.minecraftforge.network.NetworkConstants
 import thedarkcolour.kotlinforforge.forge.LOADING_CONTEXT
+import thedarkcolour.kotlinforforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.forge.runForDist
 
 @Mod(IngameIME.MODID)
 object IngameIMEClientForge {
-    val modEventBus = EventBuses.getModEventBus(IngameIME.MODID).get()
-    //val INGAMEIME_BUS = MOD_BUS
+    val modEventBus = MOD_BUS
 
     /**
      * Track mouse move
@@ -40,7 +40,6 @@ object IngameIMEClientForge {
 
     init {
         //Make sure the mod being absent on the other network side does not cause the client to display the server as incompatible
-        EventBuses.registerModEventBus(IngameIME.MODID, LOADING_CONTEXT.extension())
         LOADING_CONTEXT.registerExtensionPoint(IExtensionPoint.DisplayTest::class.java) {
             return@registerExtensionPoint IExtensionPoint.DisplayTest(NetworkConstants::IGNORESERVERONLY) { _, _ -> true }
         }

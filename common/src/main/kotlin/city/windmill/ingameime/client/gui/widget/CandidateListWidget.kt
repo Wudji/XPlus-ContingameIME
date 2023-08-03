@@ -3,7 +3,6 @@ package city.windmill.ingameime.client.gui.widget
 import net.minecraft.client.gui.Font
 import net.minecraft.client.gui.GuiGraphics
 
-
 class CandidateListWidget(font: Font) : Widget(font) {
     var candidates: Array<String>? = null
     
@@ -66,7 +65,10 @@ class CandidateListWidget(font: Font) : Widget(font) {
             y: Int,
             color: Int
         ) {
-            guiGraphics.drawString(font, text, (centerX - font.width(text) / 2), y, color)
+            guiGraphics.drawString(
+                font, text,
+                (centerX - font.width(text) / 2), y, color
+            )
         }
         
     }

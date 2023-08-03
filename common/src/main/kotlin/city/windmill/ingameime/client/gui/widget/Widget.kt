@@ -3,7 +3,6 @@ package city.windmill.ingameime.client.gui.widget
 import net.minecraft.client.gui.Font
 import net.minecraft.client.gui.GuiGraphics
 
-
 abstract class Widget(val font: Font) : net.minecraft.client.gui.components.Renderable {
     var offsetX = 0
     var offsetY = 0
@@ -23,7 +22,13 @@ abstract class Widget(val font: Font) : net.minecraft.client.gui.components.Rend
 
     open fun draw(guiGraphics: GuiGraphics, offsetX: Int, offsetY: Int, mouseX: Int, mouseY: Int, delta: Float) {
         //Background
-        guiGraphics.fill(offsetX, offsetY, offsetX + width, offsetY + height, backgroundColor)
+        guiGraphics.fill(
+            offsetX,
+            offsetY,
+            offsetX + width,
+            offsetY + height,
+            backgroundColor
+        )
     }
 
     fun moveTo(x: Int, y: Int) {

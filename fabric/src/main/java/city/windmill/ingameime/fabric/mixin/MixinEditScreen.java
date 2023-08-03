@@ -1,6 +1,6 @@
 package city.windmill.ingameime.fabric.mixin;
 
-import city.windmill.ingameime.fabric.ScreenEvents;
+import city.windmill.ingameime.client.event.ClientScreenEventHooks;
 import kotlin.Pair;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -25,7 +25,7 @@ import java.lang.reflect.Field;
 class MixinScreen {
     @Inject(method = "removed", at = @At("TAIL"))
     private void onRemove(CallbackInfo info) {
-        ScreenEvents.INSTANCE.getEDIT_CLOSE().invoker().onEditClose(this);
+        ClientScreenEventHooks.INSTANCE.getEDIT_CLOSE().invoker().onEditClose(this);
     }
 }
 
@@ -33,7 +33,7 @@ class MixinScreen {
 class MixinEditScreen {
     @Inject(method = "init", at = @At("TAIL"))
     private void onInit(CallbackInfo info) {
-        ScreenEvents.INSTANCE.getEDIT_OPEN().invoker().onEditOpen(this, new Pair<>(0, 0));
+        ClientScreenEventHooks.INSTANCE.getEDIT_OPEN().invoker().onEditOpen(this, new Pair<>(0, 0));
     }
 }
 
@@ -46,15 +46,15 @@ abstract class MixinBookEditScreen {
                     target = "Lnet/minecraft/client/gui/screens/inventory/BookEditScreen;convertLocalToScreen(Lnet/minecraft/client/gui/screens/inventory/BookEditScreen$Pos2i;)Lnet/minecraft/client/gui/screens/inventory/BookEditScreen$Pos2i;")
     )
     private void onCaret_Book(GuiGraphics guiGraphics, BookEditScreen.Pos2i pos2i, boolean bl, CallbackInfo ci) {
-        ScreenEvents.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(pos2i.x, pos2i.y));
+        ClientScreenEventHooks.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(pos2i.x, pos2i.y));
     }
 
     @Inject(method = "render",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/Component;IIIZ)I"),
+                    target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Lnet/minecraft/util/FormattedCharSequence;IIIZ)I"),
             locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void onCaret_Book(GuiGraphics arg, int i, int j, float f, CallbackInfo ci, int k, FormattedCharSequence formattedCharSequence, int m, int n) {
-        ScreenEvents.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(
+    private void onCaret_Book(GuiGraphics guiGraphics, int i, int j, float f, CallbackInfo ci, int k, FormattedCharSequence formattedCharSequence, int m, int n) {
+        ClientScreenEventHooks.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(
                 k + 36 + (114 + n) / 2
                         - Minecraft.getInstance().font.width("_"),
                 50
@@ -77,14 +77,14 @@ abstract class MixinSignEditScreen extends Screen {
                             target = "Lnet/minecraft/client/gui/GuiGraphics;fill(IIIII)V",
                             ordinal = 0)},
             locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void onCaret_Sign(GuiGraphics guiGraphics, CallbackInfo ci, float g, BlockState lv, boolean bl, boolean bl2, float h, MultiBufferSource.BufferSource lv2, float k, int l, int m, int n, int o, Matrix4f matrix4f, int t, String string2, int u, int v) {
-        //s(23)->x,o(17)->y
+    private void onCaret_Sign(GuiGraphics guiGraphics, int i, int j, float f, CallbackInfo ci, float g, BlockState lv, boolean bl, boolean bl2, float h, MultiBufferSource.BufferSource lv2, float k, int l, int m, int n, int o, Matrix4f matrix4f, int p, String string, float q, int r, int s) {
         try {
             Field m03 = matrix4f.getClass().getDeclaredField("m03");
             Field m13 = matrix4f.getClass().getDeclaredField("m13");
             m03.setAccessible(true);
             m13.setAccessible(true);
-            ScreenEvents.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>((Integer) m03.get(matrix4f) + v, (Integer) m13.get(matrix4f) + o));
+            //s(23)->x,o(17)->y
+            ClientScreenEventHooks.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>((int) m03.get(matrix4f) + s, (int) m13.get(matrix4f) + o));
         } catch (Exception ignored) {
 
         }

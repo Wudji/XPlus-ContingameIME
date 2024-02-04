@@ -35,12 +35,12 @@ An unofficial continuation of [IngameIME](https://github.com/Windmill-City/Ingam
 - Forge
     - [Kotlin for Forge](https://www.curseforge.com/minecraft/mc-mods/kotlin-for-forge)
     - [Cloth Config API (Forge)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
-    - [Architectuey API (Forge)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
+    - [Architectury API (Forge)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
 
 - Fabric
     - [Fabric Language Kotlin](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin)
     - [Cloth Config API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
-    - [Architectuey API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
+    - [Architectury API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
     - [Satin API](https://www.curseforge.com/minecraft/mc-mods/satin-api) **(Optional, conflicts with Optifine)**
 
 ### This Mod requires VCRuntime141 to run, download it on the official website of Microsoft [Download Link](https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist)

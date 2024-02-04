@@ -35,12 +35,12 @@ ZH-CN / [EN-US](README-EN.md)
 - Forge
   - [Kotlin for Forge](https://www.curseforge.com/minecraft/mc-mods/kotlin-for-forge)
   - [Cloth Config API (Forge)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
-  - [Architectuey API (Forge)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
+  - [Architectury API (Forge)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
 
 - Fabric
   - [Fabric Language Kotlin](https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin)
   - [Cloth Config API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
-  - [Architectuey API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
+  - [Architectury API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/architectury-api)
   - [Satin API](https://www.curseforge.com/minecraft/mc-mods/satin-api) **（可选，与optifine不兼容）**
 
 ### 该模组需要VCRuntime141运行，请在微软的官方网站上下载  [下载链接](https://learn.microsoft.com/zh-CN/cpp/windows/latest-supported-vc-redist)

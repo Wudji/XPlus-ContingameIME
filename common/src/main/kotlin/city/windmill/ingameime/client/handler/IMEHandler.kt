@@ -162,7 +162,7 @@ object IMEHandler {
             private var imeState = DISABLED
                 set(value) {
                     if (field == value) return
-                    LOGGER.trace("IMEState $field -> $value")
+                    LOGGER.trace("IMEState {} -> {}", field, value)
                     field = value
                     when (field) {
                         DISABLED -> ExternalBaseIME.State = false

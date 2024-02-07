@@ -2,7 +2,7 @@ plugins {
     java
     id("architectury-plugin") version "3.4-SNAPSHOT"
     id("dev.architectury.loom") version "1.4-SNAPSHOT" apply false
-    kotlin("jvm") version "1.8.0" apply false
+    kotlin("jvm") version "1.9.22" apply false
 }
 
 architectury {

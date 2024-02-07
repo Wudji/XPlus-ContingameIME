@@ -36,7 +36,6 @@ class MixinEditScreen {
     @Inject(method = "init", at = @At("TAIL"))
     private void onInit(CallbackInfo info) {
         ClientScreenEventHooks.INSTANCE.getEDIT_OPEN().invoker().onEditOpen(this, new Pair<>(0, 0));
-        //IngameIMEForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditOpen(this, new Pair<>(0, 0)));
     }
 }
 
@@ -46,7 +45,6 @@ abstract class MixinBookEditScreen {
             at = @At("TAIL"))
     private void onCaret_Book(BookEditScreen.Pos2i pos2i, CallbackInfoReturnable<BookEditScreen.Pos2i> cir) {
         ClientScreenEventHooks.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(cir.getReturnValue().x, cir.getReturnValue().y));
-        //IngameIMEForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditCaret(this, new Pair<>(cir.getReturnValue().x, cir.getReturnValue().y)));
     }
 
     @Inject(method = "render",
@@ -59,11 +57,6 @@ abstract class MixinBookEditScreen {
                         - Minecraft.getInstance().font.width("_"),
                 50
         ));
-        //IngameIMEForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.EditCaret(this, new Pair<>(
-        //        k + 36 + (114 + n) / 2
-        //                - Minecraft.getInstance().font.width("_"),
-        //        50
-        //)));
     }
 }
 

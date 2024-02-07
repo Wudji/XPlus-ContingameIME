@@ -87,7 +87,7 @@ object KeyHandler {
         companion object {
             var keyState = PENDING_KEY_DOWN
                 set(value) {
-                    LOGGER.trace("KeyState $field -> $value")
+                    LOGGER.trace("KeyState {} -> {}", field, value)
                     field = value
                 }
             lateinit var delayLongPress: WeakReference<Job>
@@ -132,14 +132,14 @@ object KeyHandler {
                             delay(300)
                             combinationKeyState = PENDING_CLICK
                             Minecraft.getInstance().execute {
-                                LOGGER.trace("${CombinationKeyAction.CLICKED}")
+                                LOGGER.trace("{}", CombinationKeyAction.CLICKED)
                                 IMEHandler.IMEState.onAction(CombinationKeyAction.CLICKED)
                             }
                         })
                         PENDING_DOUBLE_CLICK
                     }
                     KeyState.KeyAction.KEY_LONG_PRESS -> {
-                        LOGGER.trace("${CombinationKeyAction.LONG_PRESS}")
+                        LOGGER.trace("{}", CombinationKeyAction.LONG_PRESS)
                         IMEHandler.IMEState.onAction(CombinationKeyAction.LONG_PRESS)
                         PENDING_CLICK
                     }
@@ -151,11 +151,11 @@ object KeyHandler {
                 when (action) {
                     KeyState.KeyAction.KEY_CLICKED -> {
                         delayDoubleClick.get()?.cancel()
-                        LOGGER.trace("${CombinationKeyAction.DOUBLE_CLICKED}")
+                        LOGGER.trace("{}", CombinationKeyAction.DOUBLE_CLICKED)
                         IMEHandler.IMEState.onAction(CombinationKeyAction.DOUBLE_CLICKED)
                     }
                     KeyState.KeyAction.KEY_LONG_PRESS -> {
-                        LOGGER.trace("${CombinationKeyAction.LONG_PRESS}")
+                        LOGGER.trace("{}", CombinationKeyAction.LONG_PRESS)
                         IMEHandler.IMEState.onAction(CombinationKeyAction.LONG_PRESS)
                     }
                 }
@@ -166,7 +166,7 @@ object KeyHandler {
         companion object : KeyState.IKeyActionListener {
             var combinationKeyState = PENDING_CLICK
                 set(value) {
-                    LOGGER.trace("CombinationKeyState $field -> $value")
+                    LOGGER.trace("CombinationKeyState {} -> {}", field, value)
                     field = value
                 }
             lateinit var delayDoubleClick: WeakReference<Job>

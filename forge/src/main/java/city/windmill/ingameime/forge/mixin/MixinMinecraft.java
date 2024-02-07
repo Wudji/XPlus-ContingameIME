@@ -22,12 +22,10 @@ class MixinMinecraft {
     @Inject(method = "setScreen", at = @At("HEAD"))
     private void onScreenChange(Screen screenIn, CallbackInfo info) {
         ClientScreenEventHooks.INSTANCE.getSCREEN_CHANGED().invoker().onScreenChanged(screen, screenIn);
-        //IngameIMEForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.ScreenChanged(screen, screenIn));
     }
 
     @Inject(method = "resizeDisplay", at = @At("RETURN"))
     private void onScreenSizeChanged(CallbackInfo info) {
         ClientScreenEventHooks.INSTANCE.getWINDOW_SIZE_CHANGED().invoker().onWindowSizeChanged(window.getWidth(), window.getHeight());
-        //IngameIMEForge.INSTANCE.getINGAMEIME_BUS().post(new LegacyScreenEvents.WindowSizeChanged(window.getWidth(), window.getHeight()));
     }
 }

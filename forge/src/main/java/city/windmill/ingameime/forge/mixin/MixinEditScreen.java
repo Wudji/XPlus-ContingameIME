@@ -1,7 +1,6 @@
 package city.windmill.ingameime.forge.mixin;
 
 import city.windmill.ingameime.client.event.ClientScreenEventHooks;
-import com.mojang.blaze3d.vertex.PoseStack;
 import kotlin.Pair;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

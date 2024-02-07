@@ -14,7 +14,6 @@ loom {
         convertAccessWideners.set(true)
         extraAccessWideners.add(loom.accessWidenerPath.get().asFile.name)
 
-        //mixinConfig("ingameime.mixins.json")
         mixinConfig("ingameime.forge.mixins.json")
     }
 }

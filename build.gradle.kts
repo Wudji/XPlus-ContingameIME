@@ -2,6 +2,7 @@ plugins {
     java
     id("architectury-plugin") version "3.4-SNAPSHOT"
     id("dev.architectury.loom") version "1.4-SNAPSHOT" apply false
+    id("me.shedaniel.unified-publishing") version "0.1.+" apply false
     kotlin("jvm") version "1.9.22" apply false
 }
 
@@ -11,6 +12,7 @@ architectury {
 
 subprojects {
     apply(plugin = "dev.architectury.loom")
+    apply(plugin = "me.shedaniel.unified-publishing")
 
     val loom = project.extensions.getByName<net.fabricmc.loom.api.LoomGradleExtensionAPI>("loom")
 

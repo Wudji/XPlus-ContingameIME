@@ -36,7 +36,7 @@ class CompositionWidget(font: Font) : Widget(font) {
 
             var offsetX = offsetX + padding.first
             val offsetY = offsetY + padding.second
-            offsetX = guiGraphics.drawString(font, part1, offsetX, offsetY, textColor)
+            offsetX = guiGraphics.drawString(font, part1, offsetX, offsetY, textColor, false)
             //Caret-blink 0.5s
             if ((System.currentTimeMillis() % 1000) > 500) {
                 guiGraphics.fill(
@@ -48,7 +48,7 @@ class CompositionWidget(font: Font) : Widget(font) {
                 )
             }
             offsetX += caretWidth
-            guiGraphics.drawString(font, part2, offsetX, offsetY, textColor)
+            guiGraphics.drawString(font, part2, offsetX, offsetY, textColor, false)
         }
     }
 }

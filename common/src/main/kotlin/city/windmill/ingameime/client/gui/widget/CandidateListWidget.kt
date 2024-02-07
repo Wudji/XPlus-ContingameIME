@@ -53,7 +53,7 @@ class CandidateListWidget(font: Font) : Widget(font) {
             var offsetX = offsetX + padding.first
             drawCenteredString(guiGraphics, font, index.toString(), offsetX + indexWidth / 2, offsetY, textColor)
             offsetX += indexWidth
-            guiGraphics.drawString(font, text, offsetX, offsetY, textColor)
+            guiGraphics.drawString(font, text, offsetX, offsetY, textColor, false)
         }
         
         @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -67,7 +67,7 @@ class CandidateListWidget(font: Font) : Widget(font) {
         ) {
             guiGraphics.drawString(
                 font, text,
-                (centerX - font.width(text) / 2), y, color
+                (centerX - font.width(text) / 2), y, color, false
             )
         }
         

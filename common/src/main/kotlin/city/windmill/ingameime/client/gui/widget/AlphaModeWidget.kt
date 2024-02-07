@@ -39,6 +39,6 @@ class AlphaModeWidget(font: Font) : Widget(font) {
         super.draw(guiGraphics, offsetX, offsetY, mouseX, mouseY, delta)
         val offsetX = offsetX + width / 2 - font.width(text) / 2
         val offsetY = offsetY + padding.second
-        guiGraphics.drawString(font, text, offsetX, offsetY, textColor)
+        guiGraphics.drawString(font, text, offsetX, offsetY, textColor, false)
     }
 }

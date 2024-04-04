@@ -8,8 +8,8 @@
     "ThinkingStudio, TexTrue, Wybxc", "Windmill_City"
   ],
   "contact": {
-    "sources": "https://github.com/ThinkingStudios/IngameIME-ReInput",
-    "issues": "https://github.com/ThinkingStudios/IngameIME-ReInput/issues"
+    "sources": "https://github.com/ThinkingStudios/ContingameIME",
+    "issues": "https://github.com/ThinkingStudios/ContingameIME/issues"
   },
   "license": "LGPL-3.0",
   "icon": "icon.png",

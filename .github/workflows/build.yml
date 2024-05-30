@@ -28,5 +28,5 @@ jobs:
       - name: Upload artifacts (fabric)
         uses: actions/upload-artifact@v3
         with:
-          name: 1.20.6-fabric
+          name: 1.20.x-fabric
           path: ${{ github.workspace }}/fabric/build/libs

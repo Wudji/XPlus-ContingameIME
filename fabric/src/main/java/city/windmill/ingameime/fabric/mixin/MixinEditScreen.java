@@ -7,12 +7,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractSignEditScreen;
 import net.minecraft.client.gui.screens.inventory.BookEditScreen;
-import net.minecraft.client.gui.screens.inventory.HangingSignEditScreen;
 import net.minecraft.client.gui.screens.inventory.SignEditScreen;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
@@ -79,7 +77,7 @@ abstract class MixinSignEditScreen extends Screen {
                             target = "Lnet/minecraft/client/gui/GuiGraphics;fill(IIIII)V",
                             ordinal = 0)},
             locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void onCaret_Sign(GuiGraphics guiGraphics, int i, int j, float f, CallbackInfo ci, float g, BlockState lv, boolean bl, boolean bl2, float h, MultiBufferSource.BufferSource lv2, float k, int l, int m, int n, int o, Matrix4f matrix4f, int p, String string, float q, int r, int s) {
+    private void onCaret_Sign(GuiGraphics guiGraphics, CallbackInfo ci, float g, BlockState lv, boolean bl, boolean bl2, float h, MultiBufferSource.BufferSource lv2, float k, int l, int m, int n, int o, Matrix4f matrix4f, int p, String string, float q, int r, int s) {
         try {
             Field m03 = matrix4f.getClass().getDeclaredField("m03");
             Field m13 = matrix4f.getClass().getDeclaredField("m13");

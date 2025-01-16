@@ -35,7 +35,7 @@ repositories {
 
 dependencies {
     //Fabric
-    modImplementation("net.fabricmc:fabric-loader:0.13.3")
+    modImplementation("net.fabricmc:fabric-loader:${rootProject.property("fabric_loader_version")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${rootProject.property("fabric_version")}")
     //Cloth Api? "The Cloth API has largely been replaced by the Architectury API."
     //Architectury API

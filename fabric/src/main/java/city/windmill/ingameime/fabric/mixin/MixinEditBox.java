@@ -1,6 +1,7 @@
 package city.windmill.ingameime.fabric.mixin;
 
 import city.windmill.ingameime.client.event.ClientScreenEventHooks;
+import com.llamalad7.mixinextras.sugar.Local;
 import kotlin.Pair;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -67,7 +68,7 @@ abstract class MixinEditBox extends AbstractWidget {
     @Inject(method = "renderWidget",
             at = @At(value = "INVOKE", target = "java/lang/String.isEmpty()Z", ordinal = 1),
             locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void onCaret(GuiGraphics guiGraphics, int arg1, int arg2, float arg3, CallbackInfo ci, int l, int m, int n, String string, boolean bl, boolean bl2, int o, int p, int q, boolean bl3, int r) {
-        ClientScreenEventHooks.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(r, p));
+    private void onCaret(GuiGraphics guiGraphics, int arg1, int arg2, float arg3, CallbackInfo ci, @Local(ordinal = 4) int o, @Local(ordinal = 3) int n) {
+        ClientScreenEventHooks.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(o, n));
     }
 }

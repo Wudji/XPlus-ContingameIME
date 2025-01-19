@@ -8,19 +8,12 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractSignEditScreen;
 import net.minecraft.client.gui.screens.inventory.BookEditScreen;
-import net.minecraft.client.gui.screens.inventory.HangingSignEditScreen;
-import net.minecraft.client.gui.screens.inventory.SignEditScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.level.block.entity.SignBlockEntity;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin({Screen.class, AbstractSignEditScreen.class})
 class MixinScreen {
@@ -65,16 +58,9 @@ abstract class MixinBookEditScreen {
 
 @Mixin(AbstractSignEditScreen.class)
 abstract class MixinSignEditScreen extends Screen {
-
-    @Mutable
-    @Final
-    @Shadow
-    protected final SignBlockEntity sign;
     private MixinSignEditScreen(Component component, SignBlockEntity sign) {
         super(component);
-        this.sign = sign;
     }
-
 
     @Inject(method = "renderSignText",
             at = {
@@ -83,21 +69,14 @@ abstract class MixinSignEditScreen extends Screen {
                             ordinal = 1),
                     @At(value = "INVOKE",
                             target = "Lnet/minecraft/client/gui/GuiGraphics;fill(IIIII)V",
-                            ordinal = 0)},
-            locals = LocalCapture.CAPTURE_FAILSOFT)
-    //private void onCaret_Sign(GuiGraphics guiGraphics, CallbackInfo ci, float g, BlockState lv, boolean bl, boolean bl2, float h, MultiBufferSource.BufferSource lv2, float k, int l, int m, int n, int o, Matrix4f matrix4f, int p, String string, float q, int r, int s) {
-    private void onCaret_Sign(GuiGraphics guiGraphics, CallbackInfo ci, @Local(ordinal = 4) int m, @Local(ordinal = 5) int q) {
-        try {
-
-//            Field m03 = matrix4f.getClass().getDeclaredField("m03");
-//            Field m13 = matrix4f.getClass().getDeclaredField("m13");
-//            m03.setAccessible(true);
-//            m13.setAccessible(true);
-            //s(23)->x,o(17)->y
-            // dirty fix
-            ClientScreenEventHooks.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(50,50));
-        } catch (Exception ignored) {
-
-        }
+                            ordinal = 0)
+            }
+    )
+    private void onCaret_Sign(GuiGraphics guiGraphics, CallbackInfo ci,
+                              @Local(ordinal = 4) int verticalOffset,
+                              @Local(ordinal = 6) int horizontalOffset) {
+        int x = this.width / 2;
+        int y = 90;
+        ClientScreenEventHooks.INSTANCE.getEDIT_CARET().invoker().onEditCaret(this, new Pair<>(x + horizontalOffset, y + verticalOffset));
     }
 }

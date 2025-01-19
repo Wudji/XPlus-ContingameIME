@@ -23,9 +23,9 @@ class MixinScreen {
     }
 }
 
-@Mixin({BookEditScreen.class, AbstractSignEditScreen.class})
+@Mixin(value = {BookEditScreen.class, AbstractSignEditScreen.class}, priority = 980)
 class MixinEditScreen {
-    @Inject(method = "init", at = @At("TAIL"))
+    @Inject(method = "init", at = @At("HEAD"))
     private void onInit(CallbackInfo info) {
         ClientScreenEventHooks.INSTANCE.getEDIT_OPEN().invoker().onEditOpen(this, new Pair<>(0, 0));
     }
